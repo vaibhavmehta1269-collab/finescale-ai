@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "finescale-dev",
+      "runtimeExecutable": "D:\\fine anti\\.claude\\run-dev.cmd",
+      "runtimeArgs": [],
+      "port": 3000
+    }
+  ]
+}
