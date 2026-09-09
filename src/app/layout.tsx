@@ -13,8 +13,14 @@ export const viewport: Viewport = {
   themeColor: "#FFFFFF",
 };
 
+const SITE_URL = "https://www.finescaleai.com";
+
 export const metadata: Metadata = {
-  title: "FineScale AI — Enterprise AI Systems & Software Engineering",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "FineScale AI — Enterprise AI Systems & Software Engineering",
+    template: "%s | FineScale AI",
+  },
   description:
     "We design, build, and operate intelligent business systems — from connected operational layers and multi-agent workflows to custom software development and predictive analytics.",
   keywords: [
@@ -28,11 +34,24 @@ export const metadata: Metadata = {
     "Staff Augmentation",
   ],
   authors: [{ name: "FineScale AI Engineering Team" }],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "FineScale AI — Enterprise AI Systems",
     description:
       "Intelligent systems engineered to run business operations.",
-    url: "https://finescale.ai",
+    url: SITE_URL,
     siteName: "FineScale AI",
     locale: "en_US",
     type: "website",
@@ -45,6 +64,13 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "FineScale AI",
+  url: SITE_URL,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -53,6 +79,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-[#0B1220] antialiased min-h-screen flex flex-col selection:bg-blue-600/15 selection:text-[#0B1220]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <SmoothScroll>
           <CustomCursor />
           <BackgroundMatrix />
