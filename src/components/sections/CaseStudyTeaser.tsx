@@ -2,14 +2,14 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
-import { caseStudiesData } from "@/data/caseStudiesData";
+import { ArrowRight } from "lucide-react";
+import { aiOsCaseStudies } from "@/data/caseStudiesPageData";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { gsap } from "@/lib/gsap";
 
 export function CaseStudyTeaser() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const featuredCaseStudies = caseStudiesData.slice(0, 3);
+  const featuredCaseStudies = aiOsCaseStudies.slice(0, 3);
   const current = featuredCaseStudies[activeIdx];
   const deepDiveRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +29,7 @@ export function CaseStudyTeaser() {
   return (
     <section className="py-24 sm:py-36 lg:py-40 relative bg-[#F8FAFC] border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header with ScrollReveal */}
         <ScrollReveal variant="fade-up" className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 sm:mb-20">
           <div className="max-w-2xl">
@@ -45,7 +45,7 @@ export function CaseStudyTeaser() {
             href="/case-studies"
             className="text-xs font-mono text-[#0066FF] hover:text-[#0052CC] inline-flex items-center gap-1.5 transition-colors shrink-0 font-bold group"
           >
-            <span>View all 6 case studies</span>
+            <span>View all {aiOsCaseStudies.length} case studies</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
           </Link>
         </ScrollReveal>
@@ -67,11 +67,11 @@ export function CaseStudyTeaser() {
                   }`}
                 >
                   <div className="flex items-center justify-between text-xs font-mono mb-2">
-                    <span className="text-[#0066FF] font-bold">{cs.industry}</span>
+                    <span className="text-[#0066FF] font-bold">{cs.industryTag}</span>
                     <span className="text-[#334155] text-[11px] font-semibold">{cs.heroTag}</span>
                   </div>
                   <h3 className="font-display font-semibold text-base text-[#020617] mb-1.5">
-                    {cs.clientTitle}
+                    {cs.client}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#1E293B] line-clamp-2 font-normal leading-relaxed">
                     {cs.summary}
@@ -86,34 +86,34 @@ export function CaseStudyTeaser() {
             <div ref={deepDiveRef} className="rounded-2xl bg-white border border-slate-200 p-8 sm:p-10 space-y-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 text-xs font-mono">
                 <span className="text-[#0066FF] font-bold">
-                  [{current.clientPlaceholder}]
+                  [{current.client}]
                 </span>
                 <span className="text-[#334155] font-semibold">
-                  Timeline: {current.timeline}
+                  {current.timeline}
                 </span>
               </div>
 
               <div className="space-y-3">
                 <h3 className="font-display text-xl sm:text-2xl font-bold text-[#020617]">
-                  {current.clientTitle}
+                  {current.title}
                 </h3>
                 <p className="text-sm text-[#0F172A] leading-relaxed font-normal">
-                  {current.challenge}
+                  {current.summary}
                 </p>
               </div>
 
-              {/* Metrics */}
-              <div className="grid grid-cols-3 gap-4 p-5 rounded-xl bg-[#F8FAFC] border border-slate-300">
-                {current.metrics.map((m, idx) => (
+              {/* Operational Impact (before -> after, as documented on the full case study) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 rounded-xl bg-[#F8FAFC] border border-slate-300">
+                {current.operationalImpact.slice(0, 3).map((m, idx) => (
                   <div key={idx} className="group">
                     <span className="text-[10px] font-mono uppercase text-[#334155] font-bold block mb-1">
                       {m.label}
                     </span>
-                    <span className="font-mono text-base sm:text-lg font-bold text-[#020617] block group-hover:text-[#0066FF] transition-colors">
-                      {m.value}
+                    <span className="text-xs text-[#64748B] block leading-snug">
+                      {m.before}
                     </span>
-                    <span className="text-[11px] font-mono text-[#0066FF] font-bold">
-                      {m.delta}
+                    <span className="text-xs sm:text-sm font-mono font-bold text-[#0066FF] block leading-snug group-hover:text-[#0052CC] transition-colors">
+                      → {m.after}
                     </span>
                   </div>
                 ))}
@@ -123,14 +123,14 @@ export function CaseStudyTeaser() {
               <blockquote className="p-5 rounded-xl bg-[#F8FAFC] border-l-2 border-[#0066FF] text-xs sm:text-sm text-[#0F172A] italic font-sans leading-relaxed">
                 "{current.quote.text}"
                 <footer className="mt-2 text-xs font-mono text-[#334155] font-semibold not-italic">
-                  — {current.quote.author}, {current.quote.role}
+                  — {current.quote.author}
                 </footer>
               </blockquote>
 
               {/* Link to Full Detail */}
               <div className="pt-2 flex justify-end">
                 <Link
-                  href="/case-studies"
+                  href={`/case-studies#${current.id}`}
                   className="text-xs font-mono text-[#0066FF] hover:text-[#0052CC] inline-flex items-center gap-1.5 transition-colors font-bold group"
                 >
                   <span>Read complete case study</span>

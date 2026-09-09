@@ -7,6 +7,9 @@ export interface CaseStudyImpactItem {
 export interface AiOsCaseStudy {
   id: string;
   category: string;
+  industryTag: string;
+  heroTag: string;
+  summary: string;
   client: string;
   title: string;
   timeline: string;
@@ -31,6 +34,9 @@ export const aiOsCaseStudies: AiOsCaseStudy[] = [
   {
     id: "sfl-ecommerce",
     category: "E-Commerce • DTC Growth Marketing Agency",
+    industryTag: "E-Commerce",
+    heroTag: "12 Accounts, One Reporting Layer",
+    summary: "Centralized ad, revenue, and email data from 12 DTC client brands into one standardized weekly dataset with automated client-health flags.",
     client: "SFL E-Commerce",
     title: "AI-Powered Multi-Client Reporting & Performance Intelligence System",
     timeline: "Custom Automation Build • 12 Client Accounts",
@@ -62,6 +68,9 @@ export const aiOsCaseStudies: AiOsCaseStudy[] = [
   {
     id: "search-business-group",
     category: "SEO & Digital Marketing • Search Business Group",
+    industryTag: "Professional Services",
+    heroTag: "One Connected Operational Layer",
+    summary: "Replaced scattered task tracking and manual handoffs across tools with a coordinated internal workflow system.",
     client: "Search Business Group",
     title: "Internal AI Operating System for Workflow Management",
     timeline: "Custom AI OS Build • Internal Operations & Team Coordination",
@@ -94,6 +103,9 @@ export const aiOsCaseStudies: AiOsCaseStudy[] = [
   {
     id: "taco-bar-voice-agent",
     category: "Voice AI • Restaurant & Catering",
+    industryTag: "Voice AI",
+    heroTag: "Automated Catering Order Intake",
+    summary: "An AI voice agent answers catering calls, captures order and event details, and escalates to staff only when a request needs a human.",
     client: "Taco Bar",
     title: "AI Voice Agent for Automated Catering Orders",
     timeline: "Custom Voice AI Build • Catering Order Intake",
@@ -129,6 +141,9 @@ export const aiOsCaseStudies: AiOsCaseStudy[] = [
   {
     id: "agrawal-cake-ghar",
     category: "Custom Software • Inventory Management",
+    industryTag: "Custom Development",
+    heroTag: "Proactive Low-Stock Alerts",
+    summary: "Replaced manual stock checks with a custom inventory system that flags items nearing reorder thresholds automatically.",
     client: "Agrawal Cake Ghar",
     title: "Custom Inventory Management System",
     timeline: "Custom Development Build • Inventory & Stock Management",
