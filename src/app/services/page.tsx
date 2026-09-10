@@ -3,14 +3,14 @@ import ServicesPageClient from "./ServicesPageClient";
 import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Services — AI Systems, Software Engineering & Automation",
+  title: "AI Automation Services — AI Agents, Workflows & Custom Software",
   description:
-    "Explore FineScale AI's services: AI operating systems, multi-agent workflows, custom software development, AI consulting, predictive analytics, and staff augmentation.",
+    "AI automation services for business operations: AI operating systems, multi-agent workflows, voice agents, chatbots, custom software, predictive analytics and AI consulting.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Services — AI Systems, Software Engineering & Automation | FineScale AI",
+    title: "AI Automation Services — AI Agents, Workflows & Custom Software | FineScale AI",
     description:
       "We design, build, integrate, and operate intelligent systems — from enterprise AI operating systems to custom software and predictive intelligence.",
     url: "https://www.finescaleai.com/services",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Services — AI Systems, Software Engineering & Automation | FineScale AI",
+    title: "AI Automation Services — AI Agents, Workflows & Custom Software | FineScale AI",
     description:
       "We design, build, integrate, and operate intelligent systems — from enterprise AI operating systems to custom software and predictive intelligence.",
   },

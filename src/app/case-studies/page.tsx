@@ -3,14 +3,14 @@ import CaseStudiesPageClient from "./CaseStudiesPageClient";
 import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Production AI OS Deployments",
+  title: "AI Automation Case Studies — Real Client Deployments",
   description:
     "Real FineScale AI deployments: AI OS reporting for a 12-brand e-commerce agency, an internal workflow operating system, a catering voice agent, and a custom inventory system.",
   alternates: {
     canonical: "/case-studies",
   },
   openGraph: {
-    title: "Case Studies — Production AI OS Deployments | FineScale AI",
+    title: "AI Automation Case Studies — Real Client Deployments | FineScale AI",
     description:
       "Technical breakdowns of AI OS deployments — connected reporting, workflow, and operational intelligence systems built for real businesses.",
     url: "https://www.finescaleai.com/case-studies",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case Studies — Production AI OS Deployments | FineScale AI",
+    title: "AI Automation Case Studies — Real Client Deployments | FineScale AI",
     description:
       "Technical breakdowns of AI OS deployments — connected reporting, workflow, and operational intelligence systems built for real businesses.",
   },

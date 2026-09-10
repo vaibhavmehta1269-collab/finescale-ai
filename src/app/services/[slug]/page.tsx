@@ -17,19 +17,17 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const service = servicesData.find((s) => s.id === params.slug);
   if (!service) return {};
 
-  const titleName = toTitleCase(service.name);
-  const title = `${titleName} — ${service.shortPositioning}`;
-  const ogTitle = `${title} | FineScale AI`;
+  const ogTitle = `${service.seoTitle} | FineScale AI`;
 
   return {
-    title,
-    description: service.shortDescription,
+    title: service.seoTitle,
+    description: service.seoDescription,
     alternates: {
       canonical: `/services/${service.id}`,
     },
     openGraph: {
       title: ogTitle,
-      description: service.shortDescription,
+      description: service.seoDescription,
       url: `${SITE_URL}/services/${service.id}`,
       siteName: "FineScale AI",
       locale: "en_US",
@@ -38,7 +36,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
-      description: service.shortDescription,
+      description: service.seoDescription,
     },
   };
 }

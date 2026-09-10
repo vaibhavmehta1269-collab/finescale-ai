@@ -37,7 +37,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "FineScale AI — Enterprise AI Systems & Software Engineering",
+    default: "AI Automation Agency & Custom AI Systems | FineScale AI",
     template: "%s | FineScale AI",
   },
   description:
