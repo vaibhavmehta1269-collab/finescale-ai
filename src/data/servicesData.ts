@@ -12,6 +12,14 @@ export interface ServiceItem {
   icon: string;
   latencyOrMetric: string;
   typicalRoi: string;
+  /**
+   * Search-intent metadata, kept separate from on-page display copy
+   * (name/shortPositioning/etc). These feed <title> and <meta description>
+   * only, so brand voice on the page itself stays untouched while search
+   * engine titles/descriptions match how buyers actually search.
+   */
+  seoTitle: string;
+  seoDescription: string;
   includedCapabilities: string[];
   beforeState: string;
   afterState: string;
@@ -45,6 +53,8 @@ export const servicesData: ServiceItem[] = [
     icon: "Layers",
     latencyOrMetric: "Real-Time Event Bus (< 80ms)",
     typicalRoi: "30-45% Reclaimed Operational Capacity",
+    seoTitle: "AI Operating System for Business Workflow Automation",
+    seoDescription: "A connected operations layer that automates reporting, client onboarding, task routing and approval workflows across the tools your business already runs on.",
     includedCapabilities: [
       "Automated operational reporting & executive KPI rollups",
       "AI-generated daily morning briefings for leadership",
@@ -83,6 +93,8 @@ export const servicesData: ServiceItem[] = [
     icon: "Workflow",
     latencyOrMetric: "Sub-Second Agent Handoffs (< 350ms)",
     typicalRoi: "70-85% Handoff Delay Reduction",
+    seoTitle: "Multi-Agent AI Systems for Business Process Automation",
+    seoDescription: "Coordinated AI agents that move work across research, lead qualification, scheduling and CRM updates without manual handoffs between each stage.",
     includedCapabilities: [
       "Supervisor agent orchestration & task routing",
       "Specialized domain agents (Lead Triage, Research, Sales, Booking, CRM)",
@@ -120,6 +132,8 @@ export const servicesData: ServiceItem[] = [
     icon: "Code2",
     latencyOrMetric: "100% Custom Architecture & IP Handover",
     typicalRoi: "Tailored Software Architecture",
+    seoTitle: "Custom AI Software Development Services",
+    seoDescription: "Custom software and AI systems built around your existing workflows, with complete source code and IP ownership handed over on delivery.",
     includedCapabilities: [
       "Custom full-stack web applications & portals",
       "AI-powered internal business platforms & command centers",
@@ -156,6 +170,8 @@ export const servicesData: ServiceItem[] = [
     icon: "Compass",
     latencyOrMetric: "2-Week Architecture & Audit Sprint",
     typicalRoi: "Clear Technical Roadmap & Scope",
+    seoTitle: "AI Consulting & Automation Readiness Audit",
+    seoDescription: "Find where AI actually creates value in your operations before you build anything — workflow audit, opportunity mapping and a scoped technical roadmap.",
     includedCapabilities: [
       "End-to-end operational workflow assessment & bottleneck mapping",
       "Automation opportunity matrix prioritized by ROI & complexity",
@@ -192,6 +208,8 @@ export const servicesData: ServiceItem[] = [
     icon: "TrendingUp",
     latencyOrMetric: "Real-Time Signal Scoring (< 120ms)",
     typicalRoi: "Early Actionable Signals",
+    seoTitle: "Predictive Analytics Services for Business Forecasting",
+    seoDescription: "Turn historical operational data into early warning signals — demand forecasting, churn risk scoring and anomaly detection wired into your reporting.",
     includedCapabilities: [
       "Customer churn prediction & proactive retention triggers",
       "Inbound lead conversion scoring & prioritization",
@@ -228,6 +246,8 @@ export const servicesData: ServiceItem[] = [
     icon: "Users",
     latencyOrMetric: "Direct Codebase & Sprint Integration",
     typicalRoi: "Immediate Engineering Velocity",
+    seoTitle: "Hire AI & Software Engineers — Staff Augmentation",
+    seoDescription: "Add experienced AI and software engineers to your existing team without permanent headcount, embedded directly in your sprints and codebase.",
     includedCapabilities: [
       "Senior full-stack & backend developers",
       "Direct integration into your existing Git repositories & CI/CD",
@@ -264,6 +284,8 @@ export const servicesData: ServiceItem[] = [
     icon: "PhoneCall",
     latencyOrMetric: "Sub-300ms Streaming Audio",
     typicalRoi: "24/7 Telephone Coverage",
+    seoTitle: "Custom AI Voice Agent Development & Implementation",
+    seoDescription: "Custom-built AI phone agents that answer calls, qualify leads, book appointments and log every conversation to your CRM on production voice infrastructure.",
     includedCapabilities: [
       "Sub-300ms conversational turn-around latency",
       "Natural interruption handling and acoustic synthesis",
@@ -298,6 +320,8 @@ export const servicesData: ServiceItem[] = [
     icon: "MessageSquare",
     latencyOrMetric: "< 500ms Response Streaming",
     typicalRoi: "Instant Customer Guidance",
+    seoTitle: "AI Chatbot Development for Customer Support & Lead Capture",
+    seoDescription: "Custom AI chatbots connected to your real business data — answering customer questions, capturing leads and routing conversations into your existing workflows.",
     includedCapabilities: [
       "Semantic knowledge base retrieval over proprietary docs",
       "Multi-channel embedding (Web, Customer Portal, Messaging)",

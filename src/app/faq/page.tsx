@@ -4,14 +4,14 @@ import { faqData } from "@/data/faqData";
 import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "FAQ — Technical & Operational Questions",
+  title: "AI Automation FAQ — Security, Pricing & Implementation",
   description:
     "Answers on AI operating systems, multi-agent coordination, private cloud security, deterministic boundary validation, and implementation sprints at FineScale AI.",
   alternates: {
     canonical: "/faq",
   },
   openGraph: {
-    title: "FAQ — Technical & Operational Questions | FineScale AI",
+    title: "AI Automation FAQ — Security, Pricing & Implementation | FineScale AI",
     description:
       "Detailed answers regarding AI operating systems, multi-agent coordination, private cloud security, deterministic boundary validation, and implementation sprints.",
     url: "https://www.finescaleai.com/faq",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FAQ — Technical & Operational Questions | FineScale AI",
+    title: "AI Automation FAQ — Security, Pricing & Implementation | FineScale AI",
     description:
       "Detailed answers regarding AI operating systems, multi-agent coordination, private cloud security, deterministic boundary validation, and implementation sprints.",
   },
