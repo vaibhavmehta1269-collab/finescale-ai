@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --font-body: var(--font-inter);
     --background: #FFFFFF;
     --background-secondary: #F8FAFC;
     --background-accent: #F1F6FF;

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { 
+import Link from "next/link";
+import {
   Layers, 
   Workflow, 
   Code2, 
@@ -213,10 +214,15 @@ export default function ServicesPageClient() {
                       <span className="text-[#334155] font-medium">
                         Positioning: "{service.positioningLine}"
                       </span>
-                      <span className="text-[#0066FF] flex items-center gap-1.5 group-hover:translate-x-1.5 transition-transform duration-200 shrink-0 ml-4 font-bold">
+                      <Link
+                        href={`/services/${service.id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`Explore architecture & specs for ${service.name}`}
+                        className="text-[#0066FF] flex items-center gap-1.5 group-hover:translate-x-1.5 transition-transform duration-200 shrink-0 ml-4 font-bold rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066FF] focus-visible:ring-offset-2"
+                      >
                         <span>Explore Architecture & Specs</span>
                         <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
+                      </Link>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -258,9 +264,16 @@ export default function ServicesPageClient() {
                     className="hover:bg-blue-50/30 cursor-pointer transition-colors"
                   >
                     <td className="py-4 px-6 text-[#0066FF] font-bold">{s.orderNumber}</td>
-                    <td className="py-4 px-6 font-bold text-[#020617] flex items-center gap-1.5">
-                      <span>{s.name}</span>
-                      <ArrowRight className="w-3 h-3 text-[#334155]" />
+                    <td className="py-4 px-6 font-bold text-[#020617]">
+                      <Link
+                        href={`/services/${s.id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`View full specification for ${s.name}`}
+                        className="flex items-center gap-1.5 hover:text-[#0066FF] transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066FF] focus-visible:ring-offset-2"
+                      >
+                        <span>{s.name}</span>
+                        <ArrowRight className="w-3 h-3 text-[#334155]" />
+                      </Link>
                     </td>
                     <td className="py-4 px-6 text-[#1E293B] font-semibold">{s.category}</td>
                     <td className="py-4 px-6 text-[#0F172A] font-medium">{s.latencyOrMetric}</td>

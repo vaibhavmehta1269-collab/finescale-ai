@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import FAQPageClient from "./FAQPageClient";
+import { faqData } from "@/data/faqData";
+import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "FAQ — Technical & Operational Questions",
@@ -25,6 +27,33 @@ export const metadata: Metadata = {
   },
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqData.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([{ name: "FAQ", path: "/faq" }]);
+
 export default function FAQPage() {
-  return <FAQPageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <FAQPageClient />
+    </>
+  );
 }
