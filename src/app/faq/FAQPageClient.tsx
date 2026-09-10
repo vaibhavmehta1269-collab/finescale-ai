@@ -121,6 +121,7 @@ export default function FAQPageClient() {
                     onClick={() => toggleItem(faq.id)}
                     className="w-full p-6 sm:p-7 text-left flex items-start justify-between gap-4 cursor-pointer"
                     aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${faq.id}`}
                   >
                     <div className="space-y-1.5">
                       <span className="text-[11px] font-mono text-[#0066FF] uppercase tracking-wider block font-bold">
@@ -140,13 +141,19 @@ export default function FAQPageClient() {
                     </div>
                   </button>
 
-                  {isOpen && (
-                    <div className="px-6 sm:px-7 pb-7 pt-0 border-t border-slate-100 mt-2 animate-fadeIn">
-                      <p className="text-sm sm:text-base text-[#0F172A] leading-relaxed font-normal pt-4">
-                        {faq.answer}
-                      </p>
+                  <div
+                    id={`faq-answer-${faq.id}`}
+                    role="region"
+                    className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-6 sm:px-7 pb-7 pt-0 border-t border-slate-100 mt-2">
+                        <p className="text-sm sm:text-base text-[#0F172A] leading-relaxed font-normal pt-4">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               </ScrollReveal>
             );

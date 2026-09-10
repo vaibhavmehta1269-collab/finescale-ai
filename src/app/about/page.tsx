@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutPageClient from "./AboutPageClient";
+import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About — Our Engineering Philosophy & Team",
@@ -25,6 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([{ name: "About", path: "/about" }]);
+
 export default function AboutPage() {
-  return <AboutPageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <AboutPageClient />
+    </>
+  );
 }

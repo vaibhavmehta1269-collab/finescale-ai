@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CaseStudiesPageClient from "./CaseStudiesPageClient";
+import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Case Studies — Production AI OS Deployments",
@@ -25,6 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([{ name: "Case Studies", path: "/case-studies" }]);
+
 export default function CaseStudiesPage() {
-  return <CaseStudiesPageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CaseStudiesPageClient />
+    </>
+  );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { X, Check, ArrowRight } from "lucide-react";
 import { ServiceItem } from "@/data/servicesData";
 import { Button } from "@/components/ui/Button";
@@ -231,7 +232,7 @@ export function ServiceDrawer({ service, onClose }: ServiceDrawerProps) {
         </div>
 
         {/* Action Footer */}
-        <div className="drawer-stagger-item pt-5 border-t border-slate-200 flex gap-3">
+        <div className="drawer-stagger-item pt-5 border-t border-slate-200 flex flex-col gap-3">
           <Button
             href="/services#calculator"
             variant="primary"
@@ -241,6 +242,13 @@ export function ServiceDrawer({ service, onClose }: ServiceDrawerProps) {
           >
             Scope {service.name}
           </Button>
+          <Link
+            href={`/services/${service.id}`}
+            onClick={handleClose}
+            className="w-full text-center text-xs font-mono text-[#0066FF] hover:text-[#0052CC] font-bold py-2 transition-colors"
+          >
+            Full specification page →
+          </Link>
         </div>
       </div>
     </div>

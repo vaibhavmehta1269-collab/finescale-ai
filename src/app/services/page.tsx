@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServicesPageClient from "./ServicesPageClient";
+import { buildBreadcrumbJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Services — AI Systems, Software Engineering & Automation",
@@ -25,6 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([{ name: "Services", path: "/services" }]);
+
 export default function ServicesPage() {
-  return <ServicesPageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ServicesPageClient />
+    </>
+  );
 }

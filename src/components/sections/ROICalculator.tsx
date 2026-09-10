@@ -7,6 +7,12 @@ import { formatCurrency } from "@/lib/utils";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { gsap } from "@/lib/gsap";
 
+// Assumed reference implementation cost used only to illustrate a payback
+// horizon in the calculator below. These are not quotes — actual project
+// cost depends on scope, integrations, and complexity.
+const AI_OS_REFERENCE_IMPLEMENTATION_COST = 38000;
+const MULTI_AGENT_REFERENCE_IMPLEMENTATION_COST = 42000;
+
 export function ROICalculator() {
   const [calculatorMode, setCalculatorMode] = useState<"ai-os" | "multi-agent">("ai-os");
   const inputsPanelRef = useRef<HTMLDivElement>(null);
@@ -33,7 +39,7 @@ export function ROICalculator() {
   const aiOsMonthlyHoursReclaimed = Math.round(aiOsRepetitiveHours * (aiOsAutomationScope / 100));
   const aiOsMonthlyValue = Math.round(aiOsMonthlyHoursReclaimed * aiOsHourlyCost);
   const aiOsAnnualValue = aiOsMonthlyValue * 12;
-  const aiOsPaybackWeeks = Math.max(3, Math.round((38000 / (aiOsAnnualValue / 52)) * 10) / 10);
+  const aiOsPaybackWeeks = Math.max(3, Math.round((AI_OS_REFERENCE_IMPLEMENTATION_COST / (aiOsAnnualValue / 52)) * 10) / 10);
 
   // Multi-Agent Calculations
   const agentMonthlyTasks = agentWeeklyTasks * 4.33;
@@ -42,7 +48,7 @@ export function ROICalculator() {
   const agentMonthlyHoursReclaimed = Math.round(agentHandoffOverheadHours * (agentHandoffEfficiency / 100));
   const agentMonthlyValue = Math.round(agentMonthlyHoursReclaimed * agentHourlyCost);
   const agentAnnualValue = agentMonthlyValue * 12;
-  const agentPaybackWeeks = Math.max(3, Math.round((42000 / (agentAnnualValue / 52)) * 10) / 10);
+  const agentPaybackWeeks = Math.max(3, Math.round((MULTI_AGENT_REFERENCE_IMPLEMENTATION_COST / (agentAnnualValue / 52)) * 10) / 10);
 
   const handleModeChange = (mode: "ai-os" | "multi-agent") => {
     if (mode === calculatorMode) return;
@@ -388,7 +394,9 @@ export function ROICalculator() {
               <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-blue-50/70 border border-blue-200 text-[11px] font-mono text-[#0F172A] leading-relaxed font-medium">
                 <Info className="w-4 h-4 text-[#0066FF] shrink-0 mt-0.5" />
                 <span>
-                  These figures are illustrative estimates for planning purposes, not guaranteed outcomes. Actual efficiency depends on workflow complexity and data hygiene.
+                  These figures are illustrative estimates for planning purposes, not guaranteed outcomes. Actual efficiency depends on workflow complexity and data hygiene. The payback horizon assumes a reference implementation cost of{" "}
+                  {formatCurrency(calculatorMode === "ai-os" ? AI_OS_REFERENCE_IMPLEMENTATION_COST : MULTI_AGENT_REFERENCE_IMPLEMENTATION_COST)}{" "}
+                  — this is an assumption for illustration only, not a quote.
                 </span>
               </div>
 
